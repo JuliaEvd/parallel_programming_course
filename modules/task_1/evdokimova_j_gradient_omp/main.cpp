@@ -67,8 +67,8 @@ MatrixVector(matrix, x0, y, size);
 for (int i = 0; i < size; i++)
 rPrev[i] = vector[i] - y[i];
 // initiallization p,result
-memcpy(p, rPrev, size * sizeof(double));
-memcpy(result, x0, size * sizeof(double));
+std::copy(rPrev, rPrev + size, p);
+std::copy(x0, x0 + size, result);
 // iteracii metoda
 do {
 (*count)++;
