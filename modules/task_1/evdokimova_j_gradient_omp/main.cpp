@@ -41,7 +41,7 @@ for (int j = 0; j < size; j++)
 result[i] += matrix[i][j] * vector[j];
 }
 }
-double ScalVector(double* vec, double* vec2, int size) {
+double ScalVector(double* vec1, double* vec2, int size) {
 double result = 0;
 for (int i = 0; i < size; i++) {
 result += vec1[i] * vec2[i];
@@ -55,7 +55,6 @@ double* rNext = new double[size];  // rNext - neviazki sleduchego priblizhenie
 double* p = new double[size];  // p vector napravlenia
 double* y = new double[size];  // y vectornoe proizvedenie matrix*x0
 double* Ap = new double[size];  // Ap vectornoe proizvedenie matrix*p
-double* res = new double[size];
 // check tekuchaia tochnost metoda, norm norma vectora vector
 // beta, alpha koefficient raschetnih formul
 double beta, alpha, check, norm;
@@ -94,7 +93,7 @@ delete[] p;
 delete[] y;
 delete[] Ap;
 }
-int main(int argc, char argv[]) {
+int main(int argc, char **argv) {
 double** matrix;  // matrica
 double* vector;  // vector pravoi chasti
 double* result;  // vector result
