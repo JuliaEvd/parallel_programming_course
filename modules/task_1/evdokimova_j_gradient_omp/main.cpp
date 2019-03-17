@@ -3,6 +3,7 @@
 #include <iostream>
 #include <iomanip>
 #include <ctime>
+#include <algorithm>
 std::default_random_engine generator(time(0));
 std::uniform_int_distribution <int> dist(0, 10);
 void CreateMatrix(double** matrix, int size) {
