@@ -4,7 +4,7 @@
 #include <iomanip>
 #include <ctime>
 #include <algorithm>
-std::default_random_engine generator(time(0));
+std::default_random_engine generator((unsigned)time(0));
 std::uniform_int_distribution <int> dist(0, 10);
 
 void CreateMatrix(double** matrix, int size) {
@@ -64,11 +64,10 @@ void SoprGradMethod(double** matrix, double* vector, double* x0,
     double* Ap = new double[size];  // Ap vectornoe proizvedenie matrix*p
     // check tekuchaia tochnost metoda, norm norma vectora vector
     // beta, alpha koefficient raschetnih formul
-    double beta, alpha, check, norm;
+    double beta, alpha, check;
     double* swap;
     // initiallization metod
     *count = 0;
-    norm = sqrt(ScalVector(vector, vector, size));
     // vicheslenie neviazki s nachalnim priblizhenie
     MatrixVector(matrix, x0, y, size);
     for (int i = 0; i < size; i++)
@@ -101,7 +100,7 @@ void SoprGradMethod(double** matrix, double* vector, double* x0,
     delete[] Ap;
 }
 
-int main(int argc, int **argv) {
+int main(int argc, char **argv) {
     double** matrix;  // matrica
     double* vector;  // vector pravoi chasti
     double* result;  // vector result
