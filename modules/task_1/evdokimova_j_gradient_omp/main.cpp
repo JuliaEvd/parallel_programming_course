@@ -4,9 +4,8 @@
 #include <iomanip>
 #include <ctime>
 #include <algorithm>
-#include <stdlib.h>
-#define _SECURE_SCL_DEPRECATE 0
-#define -D_SCL_SECURE_NO_WARNINGS
+#include <string>
+#define _SCL_SECURE_NO_WARNINGS
 std::default_random_engine generator((unsigned)time(0));
 std::uniform_int_distribution <int> dist(0, 10);
 
@@ -59,7 +58,7 @@ double ScalVector(double* vec1, double* vec2, int size) {
     return result;
 }
 void SoprGradMethod(double** matrix, double* vector, double* x0,
-                    double eps, double* result, int* count, int maxIter, int size) {
+    double eps, double* result, int* count, int maxIter, int size) {
     double* rPrev = new double[size];  // rPrev - neviazki tekuchego priblizhenie
     double* rNext = new double[size];  // rNext - neviazki sleduchego priblizhenie
     double* p = new double[size];  // p vector napravlenia
@@ -113,9 +112,10 @@ int main(int argc, char **argv) {
     int maxIter = 0;  // max kol iteracii
     int count;  // kol iteracii
 
-    const int size = atoi(argv[1]);
-	const int eps = atoi(argv[2]);
-
+    if (argc > 1) {
+        size = atoi(argv[1]);
+        eps = atoi(argv[2]);
+    }
     matrix = new double*[size];
     for (int i = 0; i < size; i++)
         matrix[i] = new double[size];
