@@ -1,11 +1,11 @@
 // Copyright 2019 Evdokimova Julia
+#define _SCL_SECURE_NO_WARNINGS
 #include <random>
 #include <iostream>
 #include <iomanip>
 #include <ctime>
 #include <algorithm>
 #include <string>
-#define _SCL_SECURE_NO_WARNINGS
 std::default_random_engine generator((unsigned)time(0));
 std::uniform_int_distribution <int> dist(0, 10);
 
