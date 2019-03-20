@@ -107,8 +107,8 @@ int main(int argc, char **argv) {
     double* vector;  // vector pravoi chasti
     double* result;  // vector result
     double* x0;  // nachal'noe priblizhenie
-    double eps;  // tochnost
-    int size;  // razmer matrica
+    double eps = 0;  // tochnost
+    int size = 0;  // razmer matrica
     int maxIter = 0;  // max kol iteracii
     int count;  // kol iteracii
 
