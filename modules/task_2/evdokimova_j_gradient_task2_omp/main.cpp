@@ -104,12 +104,10 @@ void SoprGradMethod(double* matrix, double* vector, double* x0,
 }
 // omp
 void MatrixVector_omp(double* matrix, double* vector, double* result, int size) {
-#pragma omp parallel for private(i, j)
-    int i, j;
-    for (i = 0; i < size; i++) {
+#pragma omp parallel for
+    for (int i = 0; i < size; i++) {
         result[i] = 0;
-            for (j = 0; j < size; j++) {
-#pragma omp atomic
+            for (int j = 0; j < size; j++) {
                 result[i] += matrix[i * size + j] * vector[j];
             }
     }
