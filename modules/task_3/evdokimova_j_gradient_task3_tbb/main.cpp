@@ -1,5 +1,6 @@
 // Copyright 2019 Evdokimova Julia
 #define _SCL_SECURE_NO_WARNINGS
+#include <tbb/tbb.h>
 #include <tbb/task_scheduler_init.h>
 #include <tbb/blocked_range.h>
 #include <tbb/parallel_for.h>
@@ -136,7 +137,7 @@ class ScalarMultiplicator {
         int begin = r.begin(), end = r.end();
         c += VectorsMultiplication(&(a[begin]), &(b[begin]), end - begin);
     }
-    void join(const ScalarMultiplicator& multiplicator {
+    void join(const ScalarMultiplicator& multiplicator) {
         c += multiplicator.c;
     }
     double Result() {
@@ -242,15 +243,15 @@ int main(int argc, char **argv) {
 
 
     // Seq
-    start_seq = tbb::tick_count::now()();
+    start_seq = tick_count::now()();
     SoprGradMethod(matrix, vector, x0_seq, eps, result_seq, &count_seq, maxIter_seq, size);
     finish_seq = tbb::tick_count::now();
     time_seq = finish_seq - start_seq;
 
     // par
-    start_tbb = tbb::tick_count::now();
+    start_tbb = tick_count::now();
     SoprGradMethod_tbb(matrix, vector, x0_tbb, eps, result_tbb, &count_tbb, maxIter_tbb, size, grainSize);
-    finish_tbb = tbb::tick_count::now();
+    finish_tbb = tick_count::now();
     time_tbb = finish_tbb - start_tbb;
 
     std::cout << "SEQUENTIAL ALGORITHM: " << std::endl;
