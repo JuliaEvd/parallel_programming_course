@@ -10,7 +10,6 @@
 #include <ctime>
 #include <string>
 #include <algorithm>
-
 std::default_random_engine generator((unsigned)time(0));
 std::uniform_int_distribution <int> dist(0, 10);
 
@@ -53,7 +52,6 @@ void MatrixVector(double* matrix, double* vector, double* result, int size) {
             result[i] += matrix[i * size + j] * vector[j];
     }
 }
-
 double ScalVector(double* vec1, double* vec2, int size) {
     double result = 0;
     for (int i = 0; i < size; i++) {
@@ -200,7 +198,7 @@ TBBScalarMultiplication(rPrev, rPrev, size, grainSize);
 }
 int main(int argc, char **argv) {
     tbb::tick_count start_seq, finish_seq;
-    double time_seq, time_tbb;
+    tbb::tick_count time_seq, time_tbb;
     tbb::tick_count start_tbb, finish_tbb;
     double eps = 0;  // tochnost
     int grainSize;
