@@ -199,9 +199,9 @@ TBBScalarMultiplication(rPrev, rPrev, size, grainSize);
     delete[] Ap;
 }
 int main(int argc, char **argv) {
-    double start_seq, finish_seq;
+    tbb::tick_count start_seq, finish_seq;
     double time_seq, time_tbb;
-    double start_tbb, finish_tbb;
+    tbb::tick_count start_tbb, finish_tbb;
     double eps = 0;  // tochnost
     int grainSize;
     int pNum;
