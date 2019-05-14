@@ -199,7 +199,7 @@ TBBScalarMultiplication(rPrev, rPrev, size, grainSize);
 }
 int main(int argc, char **argv) {
     tbb::tick_count start_seq, finish_seq;
-    tbb::tick_count time_seq, time_tbb;
+    double time_seq, time_tbb;
     tbb::tick_count start_tbb, finish_tbb;
     double eps = 0;  // tochnost
     int grainSize;
@@ -243,15 +243,15 @@ int main(int argc, char **argv) {
 
 
     // Seq
-    start_seq = tick_count::now()();
+	start_seq = tbb::tick_count::now();
     SoprGradMethod(matrix, vector, x0_seq, eps, result_seq, &count_seq, maxIter_seq, size);
     finish_seq = tbb::tick_count::now();
     time_seq = finish_seq - start_seq;
 
     // par
-    start_tbb = tick_count::now();
+	start_tbb = tbb::tick_count::now();
     SoprGradMethod_tbb(matrix, vector, x0_tbb, eps, result_tbb, &count_tbb, maxIter_tbb, size, grainSize);
-    finish_tbb = tick_count::now();
+    finish_tbb = tbb::tick_count::now();
     time_tbb = finish_tbb - start_tbb;
 
     std::cout << "SEQUENTIAL ALGORITHM: " << std::endl;
