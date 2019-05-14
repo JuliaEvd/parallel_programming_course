@@ -207,7 +207,7 @@ int main(int argc, char **argv) {
     int count_seq;  // kol iteracii
     int count_tbb;
 
-    if (argc > 1) {
+    if (argc == 3) {
         pNum = atoi(argv[1]);
         size = atoi(argv[2]);
         eps = atoi(argv[3]);
