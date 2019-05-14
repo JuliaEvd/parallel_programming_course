@@ -199,7 +199,7 @@ TBBScalarMultiplication(rPrev, rPrev, size, grainSize);
 }
 int main(int argc, char **argv) {
     double eps = 0;  // tochnost
-    int grainSize;
+    int grainSize = 5;
     int pNum;
     int size = 0;  // razmer matrica
     int maxIter_seq = 0;  // max kol iteracii
@@ -209,9 +209,8 @@ int main(int argc, char **argv) {
 
     if (argc > 1) {
         pNum = atoi(argv[1]);
-        grainSize = atoi(argv[2]);
-        size = atoi(argv[3]);
-        eps = atoi(argv[4]);
+        size = atoi(argv[2]);
+        eps = atoi(argv[3]);
     }
     tbb::task_scheduler_init init(pNum);
 
