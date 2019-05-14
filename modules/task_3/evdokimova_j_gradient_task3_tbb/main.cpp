@@ -200,14 +200,14 @@ TBBScalarMultiplication(rPrev, rPrev, size, grainSize);
 int main(int argc, char **argv) {
     double eps = 0;  // tochnost
     int grainSize = 5;
-    int pNum;
+    int pNum = 4;
     int size = 0;  // razmer matrica
     int maxIter_seq = 0;  // max kol iteracii
     int maxIter_tbb = 0;
     int count_seq;  // kol iteracii
     int count_tbb;
 
-    if (argc == 3) {
+    if (argc > 1) {
         pNum = atoi(argv[1]);
         size = atoi(argv[2]);
         eps = atoi(argv[3]);
