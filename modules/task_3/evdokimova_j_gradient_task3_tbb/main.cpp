@@ -240,15 +240,15 @@ int main(int argc, char **argv) {
 
 
     // Seq
-    tbb::start_seq = tbb::tick_count::now();
+    tbb::tick_count start_seq = tbb::tick_count::now();
     SoprGradMethod(matrix, vector, x0_seq, eps, result_seq, &count_seq, maxIter_seq, size);
-    tbb::finish_seq = tbb::tick_count::now();
+    tbb::tick_count finish_seq = tbb::tick_count::now();
     double time_seq = (finish_seq - start_seq).seconds();
 
     // par
-    tbb::start_tbb = tbb::tick_count::now();
+    tbb::tick_count start_tbb = tbb::tick_count::now();
     SoprGradMethod_tbb(matrix, vector, x0_tbb, eps, result_tbb, &count_tbb, maxIter_tbb, size, grainSize);
-    tbb::finish_tbb = tbb::tick_count::now();
+    tbb::tick_count finish_tbb = tbb::tick_count::now();
     double time_tbb = (finish_tbb - start_tbb).seconds();
 
     std::cout << "SEQUENTIAL ALGORITHM: " << std::endl;
